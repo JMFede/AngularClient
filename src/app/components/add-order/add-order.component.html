@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Add Order</h2>
+<h2 mat-dialog-title  style="background-color: #123a74; color: white">Add Order</h2>
 <mat-divider></mat-divider>
 <mat-dialog-content>
     <div class="form-container">
@@ -68,5 +68,9 @@
 </mat-dialog-content>
 <mat-dialog-actions style="justify-content: center;">
   <button mat-flat-button (click)="onCancelClick()">Cancel</button>
-  <button mat-flat-button color="primary" [disabled]="!data.isLineAvailable(data.line.lineName, data.plannedDate)" (click)="onOkClick()" cdkFocusInitial>Ok</button>
+  <button mat-flat-button color="#123a74" 
+          [style.background-color]="!data.isLineAvailable(data.line.lineName, data.plannedDate) ? 'whitesmoke' : '#123a74'"
+          style = "color: white"
+          [disabled]="!data.isLineAvailable(data.line.lineName, data.plannedDate)" 
+          (click)="onOkClick()" cdkFocusInitial>Ok</button>
 </mat-dialog-actions>

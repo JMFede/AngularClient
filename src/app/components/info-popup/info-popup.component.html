@@ -1,23 +1,24 @@
-<h2 mat-dialog-title>Order Info</h2>
+<h2 mat-dialog-title  style="background-color: #123a74; color: white">Order Info</h2>
 <mat-divider></mat-divider>
-<div class="current-info">
+<div class="current-info"[style.background-color]="data.backgroundColor">
     <div>
         <div>
-            <p><strong>Order:</strong> {{ data.orderName }}</p>
+            <p><u>Order:</u> {{ data.orderName }}</p>
+            
         </div>
         <div>
-            <p><strong>Status:</strong>: {{ data.orderStatus }}</p>
+            <p><u>Status:</u> {{ data.orderStatus }}</p>
         </div>
     </div>
     <div>
         <div>
-            <p><strong>Planned Date:</strong> {{ data.currentDate }}</p>
+            <p><u>Planned Date:</u> {{ data.currentDate }}</p>
         </div>
         <div>
-            <p><strong>Line:</strong> {{ data.currentLine }}</p>
+            <p><u>Line:</u> {{ data.currentLine }}</p>
         </div>
     </div>
 </div>
 <mat-dialog-actions style="justify-content: center;">
-    <button mat-flat-button color="primary" (click)="onCloseClick()" cdkFocusInitial>Close</button>
+    <button mat-flat-button style="background-color:#123a74; color: white" (click)="onCloseClick()" cdkFocusInitial>Close</button>
 </mat-dialog-actions>

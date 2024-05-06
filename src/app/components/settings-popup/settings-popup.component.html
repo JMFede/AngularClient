@@ -1,11 +1,11 @@
-<h2 mat-dialog-title>Manage Planning</h2>
+<h2 mat-dialog-title style="background-color: #123a74; color: white">Manage Planning</h2>
 <mat-divider></mat-divider>
-<div class="current-info">
+<div class="current-info" [style.background-color]="data.backgroundColor">
     <div>
-      <p><strong>Planned Date</strong>: {{ data.currentDate }}</p>
+      <p><u>Planned Date</u>: {{ data.currentDate }}</p>
     </div>
     <div>
-      <p><strong>Line:</strong> {{ data.currentLine }}</p>
+      <p><u>Line:</u> {{ data.currentLine }}</p>
     </div>
 </div>
 <mat-dialog-content>
@@ -27,5 +27,9 @@
 </mat-dialog-content>
 <mat-dialog-actions style="justify-content: center;">
   <button mat-flat-button (click)="onCancelClick()">Cancel</button>
-  <button mat-flat-button color="primary" [disabled]="!data.isLineAvailable(data.newLine.lineName, data.newDate)" (click)="onOkClick()" cdkFocusInitial>Ok</button>
+  <button mat-flat-button color="#123a74" 
+          [style.background-color]="!data.isLineAvailable(data.newLine.lineName, data.newDate) ? 'whitesmoke' : '#123a74'"
+          style = "color: white"
+          [disabled]="!data.isLineAvailable(data.newLine.lineName, data.newDate)" 
+          (click)="onOkClick()" cdkFocusInitial>Ok</button>
 </mat-dialog-actions>

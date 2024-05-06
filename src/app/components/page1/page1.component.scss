@@ -1,17 +1,14 @@
-body {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  overflow-y: scroll; /* Enable vertical scrolling */
+body, html {
+  overflow: hidden;
 }
 
 table {
   width: 90%;
+  overflow-y: auto;
 }
 
 th.mat-sort-header-sorted {
   text-align: center;
-  color: black;
 }
 mat-expansion-panel {
   width: 100%;
@@ -42,7 +39,6 @@ h1.example-app-name {
   margin-left: 30px;
   font-weight: 450;
   font-family: 'Roboto', sans-serif; /* Set font to Roboto */
-  color: black; /* Set font color */
   font-size: 20px; /* Increase font size to your desired value */
 
 }
@@ -108,5 +104,15 @@ table {
   color: white; /* Set color for the add icon */
   background-color: #123a74;
   justify-content: space-around;
+}
+
+.disabled-clear-button {
+  text-decoration: underline;
+  color: #ccc; /* Light grey color when disabled */
+}
+
+.enabled-clear-button {
+  text-decoration: underline;
+  color: #123a74; /* Default color when enabled */
 }
 

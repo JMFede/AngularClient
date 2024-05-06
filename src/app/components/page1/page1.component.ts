@@ -374,6 +374,8 @@ export class Page1Component implements OnInit, OnDestroy{
       newDate: '',
       lines: this.lineData,
       isLineAvailable: this.isLineAvailable.bind(this),
+      isLate : this.isLate(element),
+      backgroundColor: this.getRowColor(element)
     };
       
     const dialogRef = this.dialog.open(SettingsPopupComponent, dialogConfig);
@@ -412,7 +414,9 @@ export class Page1Component implements OnInit, OnDestroy{
       currentDate: element.plannedDate,
       currentLine: element.lineName,
       orderName: element.name,
-      orderStatus: element.statusName
+      orderStatus: element.statusName,
+      isLate : this.isLate(element),
+      backgroundColor: this.getRowColor(element)
     };
   
     const dialogRef = this.dialog.open(InfoPopupComponent, dialogConfig);
@@ -445,7 +449,16 @@ export class Page1Component implements OnInit, OnDestroy{
         this.service.updateOrderData(element).subscribe({
           next: (res:any) => {
           console.log(res, 'update response from api');
-          },
+          this.service.getStatusData().subscribe({
+            next: (res:any) => {
+            this.statusData = res;
+            this.statusData = this.statusData.filter((x:any) => x != null);
+            },
+            error: (err:any) => {
+              console.log(err);
+            }
+            })
+            },
           error: (err:any) => {
             console.log(err);
           }
@@ -466,6 +479,15 @@ export class Page1Component implements OnInit, OnDestroy{
       this.service.updateOrderData(element).subscribe({
         next: (res:any) => {
         console.log(res, 'update response from api');
+        this.service.getStatusData().subscribe({
+          next: (res:any) => {
+          this.statusData = res;
+          this.statusData = this.statusData.filter((x:any) => x != null);
+        },
+        error: (err:any) => {
+          console.log(err);
+        }
+        })
       },
       error: (err:any) => {
         console.log(err);
@@ -503,14 +525,14 @@ export class Page1Component implements OnInit, OnDestroy{
     return isAvailable;
   }
   getRowColor(element: any): string {
-    // Set background color to light red if pause process is disabled
+
     if (this.isLate(element)) {
       return 'lightcoral';
     }
     else if (element.statusName === 'Closed') {
       return 'lightgrey';
     }
-    return 'initial'; // Default color
+    return 'initial';
   }
 
 }

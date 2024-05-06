@@ -8,7 +8,7 @@ import { Observable, catchError, tap, throwError } from 'rxjs';
 })
 export class ServiceService {
 
-  private path = environment.apiUrl; //set the path to the api
+  private path = environment.API_URL; //set the path to the api
 
   constructor(private httpClient: HttpClient) { }
 

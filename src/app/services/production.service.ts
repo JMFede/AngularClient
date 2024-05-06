@@ -14,9 +14,9 @@ export class ProductionService {
   constructor() { }
 
   startConnection() {
-    console.log('Starting SignalR connection', `${environment.apiUrl}planthub`);
+    console.log('Starting SignalR connection', `${environment.API_URL}planthub`);
     this.hubConnection = new HubConnectionBuilder()
-      .withUrl(`${environment.apiUrl}planthub`).withAutomaticReconnect()
+      .withUrl(`${environment.API_URL}planthub`).withAutomaticReconnect()
       .build();
 
     this.hubConnection.start()

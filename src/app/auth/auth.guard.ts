@@ -22,10 +22,8 @@ export class AuthGuard{
     state: RouterStateSnapshot): boolean {
       const username = this.authService.getUsername();
       if (username) {
-        // User is logged in, allow access
         return true;
       } else {
-        // User is not logged in, redirect to login page
         this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
         return false;
       }

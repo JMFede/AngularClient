@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = environment.apiUrl;
+  private apiUrl = environment.API_URL;
   private USERNAME_KEY = 'username';
   isLog = false;
 
@@ -46,7 +46,7 @@ export class AuthService {
   isRegistered(username: string): Observable<boolean> {
     console.log("login", username);
     const header = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.httpClient.get<boolean>(this.apiUrl + 'api/isRegistered'+`?username=${username}`, { headers: header });
+    return this.httpClient.get<boolean>(this.apiUrl + 'api/IsRegistered'+`?username=${username}`, { headers: header });
   }
 
 }
